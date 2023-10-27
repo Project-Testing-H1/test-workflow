@@ -1,0 +1,16 @@
+name: "Create Issue on Pull Request"
+
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Issue From Pull Request
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const title = "A new pull request is submitted"; // Replace with your issue title
+            const body = `Please review the new pull request: ${context.payload.pull_request.html_url}`; //
